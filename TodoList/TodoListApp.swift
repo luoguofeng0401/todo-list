@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct TodoListApp: App {
+    let container = try! ModelContainer(for: TodoItem.self)
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TodoListView(modelContext: container.mainContext)
         }
+        .modelContainer(container)
     }
 }
